@@ -1,6 +1,6 @@
 #!/bin/bash
-# Run this as a script
 sudo hostname docker
+sudo apt update -y
 sudo apt install docker.io -y
 sudo usermod -aG docker ubuntu 
 # Install java as jenkins dependency
