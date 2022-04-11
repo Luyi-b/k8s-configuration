@@ -26,6 +26,7 @@ RELATIVE EASE SCRIPT TO BUILD AND DEPLOY A CONTAINER TO DOCKER FROM GIT ON AN UB
     $ sudo sed -i "/^[^#]*PasswordAuthentication[[:space:]]no/c\PasswordAuthentication yes" /etc/ssh/sshd_config
     $ sudo service sshd restart
     $ sudo usermod -aG  docker jenkins
+    $ sudo apt-get update
 # You can also copy this into a shell script (remember to start the top line with #!/bin/bash).
 # Either way, the end result should make your terminal user output "jenkins@docker"
 # You can also download the shell script from github using $ wget https://github.com/aanuoluwapoakinyera/k8s-configuration/blob/main/docker-Jenkins-installation-ubuntu_script.sh
@@ -79,6 +80,7 @@ RELATIVE EASE SCRIPT TO BUILD AND DEPLOY A CONTAINER TO DOCKER FROM GIT ON AN UB
     Disable anonymous access since we want to know who logged in.
 
 - Create a repository on nexus GUI by clicking on Settings -> Repositories -> Create Repository -> maven2(hosted)
+    Repository name should be ci-job-snapshot
     Select version policy to be "Snapshot"
     Click create
 
