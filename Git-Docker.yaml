@@ -80,7 +80,7 @@ RELATIVE EASE SCRIPT TO BUILD AND DEPLOY A CONTAINER TO DOCKER FROM GIT ON AN UB
     Disable anonymous access since we want to know who logged in.
 
 - Create a repository on nexus GUI by clicking on Settings -> Repositories -> Create Repository -> maven2(hosted)
-    Repository name should be "ci-job-snapshot"
+    Repository name should be ci-job-snapshot
     Select version policy to be "Snapshot"
     Click create
 

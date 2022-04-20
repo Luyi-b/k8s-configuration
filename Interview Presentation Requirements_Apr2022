@@ -1,0 +1,31 @@
+REQUIREMENTS GATHERING
+- Company Business: Book selling E-commerce (Web application)
+- Plan to scale to infinite - Kubernetes (I suggest fully managed e.g. EKS)
+	- replicaset
+	- cluster autoscaling (desired, maximum, minimum nodes)
+	- Monitoring for need to autoscale
+- Application stack (React - Frontend) & (NodeJS - Backend) 
+	 - Package with npm (Node Package Manager) 
+- Take app from local to fully scalable cloud infra solution (DevOps end-to-end lifecycle - morning devotion)
+- Cloud provider - AWS
+- Design automated CI/CD pipeline (Jenkins declarative pipeline)
+- Github will have 3 branches - Dev, Staging & Prod
+	- Assign access to developers to commit their codes to Github
+	- Create a Staging branch from which you would pull the code into your pipeline for deployment
+	- Create a Prod branch which would be the main production branch and if changes need to be made, should be made on test or staging
+	- You can use Git merge command to update your repositories from test. 
+- Monitor infrastructure (Prometheus, Grafana, AWS Cloudwatch)
+	- Use helm charts to install Prometheus, Grafana
+	- Configure AWS cloudwatch (& another service) to monitor the health of the systems
+	- Infrasturcture will report issues to slack/email
+- Security & data protection is a priority (credentialing, AWS IAM, Backing up & snapshots)
+	- Sonarqube for data vulnerability scanning etc
+- Being on budget is a prime necessity (Ensure your systems deployed is as minimal as possible 		but ready to scale at the slightest increase in traffic)
+- 
+
+PLAN
+- How to implement the solution
+- Specificity of tools & systems (Ensure you talk about EKS, Terraform etc)
+- Networking - VPC provisioning
+- Diagrams/ Flowchart
+- 

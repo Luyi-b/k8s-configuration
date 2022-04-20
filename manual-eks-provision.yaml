@@ -1,0 +1,38 @@
+PROVISIONING AWS EKS INFRASTRUCTURE MANUALLY WITH NODE GROUPS (RELATIVE EASE SCRIPT)
+======= STEP 1 - CREATE EKS IAM ROLE ==============
+- Navigate to IAM -> Roles -> Create Role. Select AWS Service and in "Use cases for other AWS services" section, scroll to EKS, then select EKS. When EKS is selected, other EKS options pop up, select EKS - Cluster. Click Next
+
+- Next stage requires adding permission and the AmazonEKSClusterPolicy is automatically selected already. Click Next 
+
+- The next stage is to enter the role name, review selections and create. In the Role name section, enter "eks-cluster-role" as the role name (can be anything but better to choose it for consistency).
+
+- Finally click on Create Role and Role will be crreated. You will also find it in the list of your roles (if you have any already).
+
+STEP 1 COMPLETED
+
+======= STEP 2 - CREATE VPC FOR WORKER NODES WITH AWS CLOUD FORMATION ==============
+- Navigate to a region you're comfortable with. For this script, we will use us-west-2 (Oregon).
+
+- Click on CloudFormation and then Create Stack. We will be using a prepared public and private subnets template stored on AWS's S3 bucket (https://s3.us-west-2.amazonaws.com/amazon-eks/cloudformation/2020-10-29/amazon-eks-vpc-private-subnets.yaml) and this will be used to provision a VPC with 2 public and 2 private subnets. 
+
+- From the Prerequisite - Prepare template section, select the "Template is ready" option.
+
+- In the Specify template section, choose the Amazon S3 URL option and paste the link to the yaml file
+
+======= STEP 3 - CREATE EKS CLUSTER (MASTER NODES & CONTROL PLANE) ==============
+
+
+======= STEP 4 - INSTALL & CONNECT KUBECTL WITH EKS CLUSTER ==============
+
+
+======= STEP 5 - CREATE EC2 IAM ROLE FOR NODE GROUP ==============
+
+
+======= STEP 6 - CREATE NODE GROUP AND ATTACH TO EKS CLUSTER ==============
+
+
+======= STEP 7 - CONFIGURE CLUSTER AUTOSCALING ==============
+
+
+======= STEP 8 - DEPLOY NGINX CONTAINER TO OUR EKS CLUSTER AND TEST REPLICA & AUTOSCALING ==============
+
