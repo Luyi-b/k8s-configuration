@@ -135,7 +135,39 @@ END OF STEP 5
 END OF STEP 6
 
 ======= STEP 7 - CONFIGURE CLUSTER AUTOSCALING ==============
-- 
+- First thing is to create a policy and attach to the eks
+    On AWS console go to Services -> IAM -> Policies then create a new policy. We will be creating a custom policy. 
+
+- Click on Create Policy and in the JSON tab replace the script in it with the below: 
+      {
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Action": [
+                "autoscaling:DescribeAutoScalingGroups",
+                "autoscaling:DescribeAutoScalingInstances",
+                "autoscaling:DescribeLaunchConfigurations",
+                "autoscaling:DescribeTags",
+                "autoscaling:SetDesiredCapacity",
+                "autoscaling:TerminateInstanceInAutoScalingGroup",
+                "ec2:DescribeLaunchTemplateVersions"
+            ],
+            "Resource": "*",
+            "Effect": "Allow"
+        }
+    ]
+}
+
+- Click on next, takes you to the tags page, do nothing and just click next.
+
+- In the role name section, enter node-group-autoscale-policy as name and click on create policy.
+
+- Still in the IAM section, navigate to Roles and select the eks-node-group-role. Under the list of policies for the role, click add permissions and attach policies.
+
+- It will list a couple of AWS policies, check the policy just created (node-group-autoscale-policy) and click attach policies. 
+
+- Apply the modified cluster autoscaler configs file to your eks cluster with the following command to your instance with kubectl installed:
+    $ kubectl apply -f 
 
 ======= STEP 8 - DEPLOY NGINX CONTAINER TO OUR EKS CLUSTER AND TEST REPLICA & AUTOSCALING ==============
 
