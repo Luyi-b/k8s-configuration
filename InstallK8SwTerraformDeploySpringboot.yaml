@@ -124,4 +124,8 @@ DEPLOYING K8S WITH TERRAFORM END TO END WITH RELATIVE EASE
    # You can also find it in Amazons Elastic Load Balancer section by navigating to EC2 -> Load balancers (on the left menu)
    Once you copy this URL, you will be able to assess the springboot Landmark application and VOILA, congratulations. 
 
+<<<<<<< HEAD
 # REMEMBER TO DESTROY YOUR INFRASTRUCTURE by removing the deployed app from Kubernetes first then WITH terraform destroy TO AVOID EXCESSIVE BILLING FROM AWS. YOU CAN ALWAYS CREATE A NEW INFRASTRUCTURE BY RUNNING YOUR SCRIPT.
+=======
+# REMEMBER TO DESTROY YOUR INFRASTRUCTURE WITH terraform destroy TO AVOID EXCESSIVE BILLING FROM AWS. YOU CAN ALWAYS CREATE A NEW INFRASTRUCTURE BY RUNNING YOUR SCRIPT.
+>>>>>>> 62add55b7008fb6da49e16d7d482208bff37f1f8
