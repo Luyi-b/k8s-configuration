@@ -23,7 +23,7 @@ Click Next after pasting the link
 
 - Enter the name of your stack: eks-worker-node-vpc-stack and click next; leave the rest of the configuration as-is continue to keep clicking next until the last stage and click Create Stack.
 
-- It will lead you to the events page where you will see the stack being created and when done (may take up to 10 minutes), it shows, CREATE COMPLETE.
+- It will lead you to the events page where you will see the stack being created and when done (may take up to 5 minutes), it shows, CREATE COMPLETE.
 
 - Leave the Page for CloudFormation open as you will need the parameters in the output tab of the stack you created
 
@@ -60,14 +60,21 @@ STEP 2 COMPLETE
     
     $ sudo apt-get install awscli
 
-    - Create an IAM User by going to Services -> IAM -> Users -> Add Users in the AWS console
+    - Create an IAM User by going to Services -> IAM -> Users -> Add Users in the AWS console. Click on create user and name it AwsCLIUser
 
+      - Click on Next (Permissions): In the permissions page, click on attach existing policies directly. 
 
-    - When user successfully completed, copy the access key and secret key into the prompt after you run the command in your EC2 terminal: 
+      - Search for AdministratorAccess, check the box and click on next. AmazonEKSClusterPolicy
+
+      - Review the policies and click on create user. 
+
+      - Download the credentials and save it on your PC as you'll be needing it from time to time.
+
+    - When user successfully completed, copy the access key ID and secret key that was just created into the prompt after you run the command in your EC2 terminal (they are also available in your CSV file): 
 
     $ aws configure
 
-      - Enter your access key and secret key then choose the correct region where you are running your EKS cluster (for me us-west-2). Press enter when done.
+      - Enter your access key and secret key then choose the correct region where you are running your EKS cluster (for me us-west-2). Enter JSON for default output format. Press enter when done.
 
     - Update your instance again to include new dependencies then install kubectl and connect to your EKS cluster.
 
@@ -167,7 +174,10 @@ END OF STEP 6
 - It will list a couple of AWS policies, check the policy just created (node-group-autoscale-policy) and click attach policies. 
 
 - Apply the modified cluster autoscaler configs file to your eks cluster with the following command to your instance with kubectl installed:
-    $ kubectl apply -f 
+    $ kubectl apply -f https://github.com/aanuoluwapoakinyera/k8s-configuration/blob/dev/cluster-autoscaler-autodiscover.yml
 
+- It will output a number of components created in your cluster.
+
+STEP 7 FINISHED
 ======= STEP 8 - DEPLOY NGINX CONTAINER TO OUR EKS CLUSTER AND TEST REPLICA & AUTOSCALING ==============
 
