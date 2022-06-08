@@ -91,11 +91,18 @@ DEPLOYING K8S WITH TERRAFORM END TO END WITH RELATIVE EASE
 # When you run the script to create EKS with terraform, by default it comes with one VPC, 2 private subnets, 2 public subnets, security groups (firewalls) and a managed control plane with 3 master nodes in the 3 AZs of your region for HIGH AVAILABILITY.
 
 - Install kubectl in order to remotely connect to your Terraform provisioned EKS infrastructure from your Ubuntu server with the following commands. 
-    $ curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
+    #curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
 
+    $ curl -LO https://dl.k8s.io/release/v1.23.6/bin/linux/amd64/kubectl
+    
+    $ sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+    
     $ chmod +x ./kubectl
 
     $ sudo mv ./kubectl /usr/local/bin/kubectl
+    
+    #verify kubectl version 
+    $ kubectl version --client
 
 - Connect to your EKS cluster from your Ubuntu server by running the command (after your EKS cluster has been created as you need the cluster name - it's already in the variables.tf file though)
     $ aws eks --region us-west-2 update-kubeconfig --name terraform-eks-demo
